@@ -1,0 +1,14 @@
+Sa 05 Aug 2017 16:46:20 CEST
+Starting a new project. It's kinda hard to get off the ground with node. Use npm install. Installed chai and mocha as dev dependencies and for production: webpack, react.
+
+Sa 05 Aug 2017 17:04:44 CEST
+Started reading about Express. Will make a REST API very easy so gonna use it on the server.
+
+Sa 05 Aug 2017 17:42:21 CEST
+Need to decide what kind of database to have. Either a relational or data. SQL or Mongo. Might be some relationships between ingredients, but the main relationship will be the glass. I don't feel like it would benefit from having a relational database.
+
+Sa 05 Aug 2017 17:54:09 CEST
+Need to get Babel working. Think I did it with webpack last time. See if I can get it separate from webpack.
+
+So 06 Aug 2017 01:21:58 CEST
+Pretty easy. Just install babel-cli and a preset and you're good to go.

@@ -1,0 +1,22 @@
+{
+  "name": "cocktail-server",
+  "version": "1.0.0",
+  "description": "Provides recipes for cocktails as objects.",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel-node index.js --presets es2015",
+    "test": "mocha --compilers js:babel-register --recursive",
+    "test:watch": "npm run test -- --watch"
+  },
+  "author": "David Buckley",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0"
+  },
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}
