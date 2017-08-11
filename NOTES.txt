@@ -12,3 +12,40 @@ Need to get Babel working. Think I did it with webpack last time. See if I can g
 
 So 06 Aug 2017 01:21:58 CEST
 Pretty easy. Just install babel-cli and a preset and you're good to go.
+
+So 06 Aug 2017 15:59:09 CEST
+Using curl for custom requests. Use -i to include HTTP headers. Use -X to specify type of request (GET/POST etc.).
+
+So 06 Aug 2017 16:59:27 CEST
+Had problems with body being undefined on a POST request. Turns out I need to configure express to use a body parser, but configure() has been deprecated and bodyParser must be installed separately. See here for the module: https://github.com/expressjs/body-parser.
+
+So 06 Aug 2017 18:59:43 CEST
+Gonna write some tests for the server before moving onto attempting to write a client in angular.
+
+So 06 Aug 2017 19:02:34 CEST
+Nope. Don't know how to write unit-tests for something which is just an interface for a database.
+
+So 06 Aug 2017 22:06:02 CEST
+Apparently have to install angular globally. The global installation allows you to use `ng` as commands, the local is used by node. See here: https://github.com/angular/angular-cli/issues/1996.
+
+Di 08 Aug 2017 15:56:28 CEST
+Can use 'CanDeactivate' with location.back() to determine if we should leave a page.
+
+Di 08 Aug 2017 18:31:17 CEST
+Having problems with 'Access-Control-Allow-Origin' when getting data from the backend via URL. Server-side issue: https://stackoverflow.com/questions/29547003/angularjs-no-access-control-allow-origin-header-is-present-on-the-requested-r#29548846.
+Solution for express apparently: https://stackoverflow.com/questions/23177628/post-to-express-js-with-access-control-allow-origin.
+
+Mi 09 Aug 2017 21:17:43 CEST
+Adding Index to DB for searching: https://docs.mongodb.com/manual/text-search/
+
+Mi 09 Aug 2017 21:27:46 CEST
+Turns out it's actually best using a regular expression for partial words. Just use a standard RegExp in the find object. If passing an object, use $regex and $options as members. E.g.
+find({ name: { $regex: new RegExp('^' + searchTerm), $options: 'i' } });
+
+Mi 09 Aug 2017 21:53:07 CEST
+Some things to do on the server side:
+ [ ] turn the database into a service and pass into places
+ [ ] write tests for the core functions
+
+Do 10 Aug 2017 14:43:36 CEST
+Can register other global style sheets in the .angular-cli.json file: https://stackoverflow.com/questions/40273463/angular-2-global-css-file.

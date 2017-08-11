@@ -1,0 +1,28 @@
+<div *ngIf="cocktail">
+  <h2>{{ cocktail.name }}</h2>
+
+  <p *ngIf="cocktail.description">{{ cocktail.description }}</p>
+
+  <h3>Glas</h3>
+  <p>{{ cocktail.glass }}</p>
+  <p>{{ cocktail.ice ? 'Mit Eis' : 'Ohne Eis' }}</p>
+
+  <h3>Zutaten</h3>
+
+  <ul>
+    <li *ngFor="let ingredient of cocktail.ingredients">
+      {{ ingredient }}
+    </li>
+  </ul>
+
+  <h3>Methode</h3>
+
+  <ul>
+    <li *ngFor="let instruction of cocktail.method">
+      {{ instruction }}
+    </li>
+    <li *ngIf="cocktail.decoration">
+      <span class="deco">Deco</span>: {{ cocktail.decoration }}
+    </li>
+  </ul>
+</div>
