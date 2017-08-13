@@ -33,3 +33,15 @@ export class CocktailFilter {
     });
   }
 }
+
+@Pipe({
+  name: 'IngredientFilter'
+})
+export class IngredientFilter {
+  transform(cocktails: Cocktail[], args: any) {
+    return cocktails.filter(cocktail => {
+      return new RegExp(escapeRegExp(args), 'i')
+        .test(cocktail.ingredients.reduce((total, x) => total + x, ''));
+    });
+  }
+}

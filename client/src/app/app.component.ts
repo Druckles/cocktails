@@ -8,9 +8,9 @@ import { Router } from '@angular/router';
       <h1>Cocktails - Das Lamm</h1>
     </header>
 
-    <body class="container">
+    <div class="container">
       <router-outlet></router-outlet>
-    </body>
+    </div>
   `,
   styleUrls: ['app.component.scss']
 })

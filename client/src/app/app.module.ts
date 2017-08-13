@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { CocktailService } from './cocktail.service';
-import { CocktailFilter } from './cocktail-filter.pipe';
+import { CocktailFilter, IngredientFilter } from './cocktail-filter.pipe';
+import { SortPipe } from './sort.pipe';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard.component';
@@ -18,12 +20,15 @@ import { CocktailComponent } from './cocktail.component';
     DashboardComponent,
     CocktailsComponent,
     CocktailComponent,
-    CocktailFilter
+    CocktailFilter,
+    IngredientFilter,
+    SortPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpModule,
+    FormsModule
   ],
   providers: [CocktailService],
   bootstrap: [AppComponent],

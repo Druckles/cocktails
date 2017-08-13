@@ -1,5 +1,5 @@
 <ul>
-  <li *ngFor="let cocktail of cocktails" class="card">
+  <li *ngFor="let cocktail of cocktails | SortPipe:sortFunction" class="card">
     <a [routerLink]=[cocktail.id] class="card-header {{ cocktail.alcohol === false ? 'alcoholfree' : ''}}">
       {{ cocktail.name }}
     </a>

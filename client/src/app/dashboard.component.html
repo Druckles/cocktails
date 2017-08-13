@@ -1,0 +1,28 @@
+<div class="mb-2">
+  <span>Sort by: </span>
+  <a href="#" (click)="changeSortingMethod(aToZ.bind(this))" class="btn btn-sm btn-outline-primary">A - Z</a>
+  <a href="#" (click)="changeSortingMethod(zToA.bind(this))" class="btn btn-sm btn-outline-primary">Z - A</a>
+  <a href="#" (click)="changeSortingMethod(glassSort.bind(this))" class="btn btn-sm btn-outline-primary">Glas</a>
+</div>
+
+<input #searchBox type="text" (keyup)="search(searchBox.value)" class="mb-4 d-print-none" placeholder="Filter..." />
+
+<div class="btn-group" data-toggle="buttons">
+  <label class="btn btn-secondary {{ isSearchByName() ? 'active' : '' }}">
+    <input type="radio" name="searchOption" [(ngModel)]="searchType" value="name" checked /> Namen
+  </label><label class="btn btn-secondary {{ !isSearchByName() ? 'active' : '' }}">
+    <input type="radio" name="searchOption" [(ngModel)]="searchType" value="ingredient" /> Zutaten
+  </label>
+</div>
+
+<cocktails *ngIf="searchTerm; else elseBlock" [cocktails]="isSearchByName() ? (cocktails | CocktailFilter:[{name: searchTerm}, {regex: true}]) : (cocktails | IngredientFilter:searchTerm)" [sortFunction]="sortFunction"></cocktails>
+<ng-template #elseBlock>
+
+  <h2>Mit Alkohol</h2>
+  <cocktails [cocktails]="cocktails | CocktailFilter:[{alcohol: false}, {filterOut: true}]" [sortFunction]="sortFunction"></cocktails>
+
+  <hr />
+  <h2>Alkoholfrei</h2>
+  <cocktails [cocktails]="cocktails | CocktailFilter:{alcohol: false}" [sortFunction]="sortFunction"></cocktails>
+
+</ng-template>

@@ -9,4 +9,5 @@ import { Cocktail } from './cocktail';
 })
 export class CocktailsComponent {
   @Input() cocktails: Cocktail[];
+  @Input() sortFunction: (a: Cocktail, b: Cocktail) => Number;
 }

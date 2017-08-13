@@ -3,21 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Cocktail } from './cocktail'
 import { CocktailService } from './cocktail.service';
 
-      //<input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+type SortFunction = (a: Cocktail, b: Cocktail) => number;
+
 @Component({
   selector: 'dashboard',
-  template: `
-    <input #searchBox type="text" (keyup)="search(searchBox.value)" class="mb-4 d-print-none" />
-    <cocktails *ngIf="searchTerm; else elseBlock" [cocktails]="cocktails | CocktailFilter:[{name: searchTerm}, {regex: true}]"></cocktails>
-    <ng-template #elseBlock>
-      <h2>Mit Alkohol</h2>
-      <cocktails [cocktails]="cocktails | CocktailFilter:[{alcohol: false}, {filterOut: true}]"></cocktails>
-
-      <hr />
-      <h2>Alkoholfrei</h2>
-      <cocktails [cocktails]="cocktails | CocktailFilter:{alcohol: false}"></cocktails>
-    </ng-template>
-  `,
+  templateUrl: 'dashboard.component.html',
   styleUrls: ['cocktails.component.scss']
 })
 export class DashboardComponent implements OnInit {
@@ -25,6 +15,30 @@ export class DashboardComponent implements OnInit {
 
   cocktails: Cocktail[] = [];
   searchTerm: string;
+  sortFunction: SortFunction = this.aToZ.bind(this);
+  searchType: string = 'name';
+
+  private strcmp(a: string, b: string): number {
+    if (a < b) {
+      return -1;
+    } else if (a === b) {
+      return 0;
+    } else {
+      return 1;
+    }
+  }
+
+  private aToZ(a: Cocktail, b: Cocktail): number {
+    return this.strcmp(a.name, b.name);
+  }
+
+  private zToA(a: Cocktail, b: Cocktail): number {
+    return this.aToZ(a, b) * -1;
+  }
+
+  private glassSort(a: Cocktail, b: Cocktail): number {
+    return this.strcmp(a.glass, b.glass) * -1;
+  }
 
   ngOnInit(): void {
     this.cocktailService.getCocktails().then(cocktails => {
@@ -32,8 +46,19 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  search(term: string): void {
+  private isSearchByName(): boolean {
+    return this.searchType === 'name';
+  }
+
+  private search(term: string): void {
     this.searchTerm = term;
-    //console.log(this.searchTerm);
+  }
+
+  private changeSortingMethod(sorting: SortFunction): void {
+    this.sortFunction = sorting;
+  }
+
+  private checkSort(sorting: SortFunction): boolean {
+    return this.sortFunction === sorting;
   }
 }
