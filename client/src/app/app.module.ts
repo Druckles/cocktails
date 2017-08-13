@@ -5,16 +5,20 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 
 import { CocktailService } from './cocktail.service';
+import { CocktailFilter } from './cocktail-filter.pipe';
 
 import { AppComponent } from './app.component';
+import { DashboardComponent } from './dashboard.component';
 import { CocktailsComponent } from './cocktails.component';
 import { CocktailComponent } from './cocktail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    DashboardComponent,
     CocktailsComponent,
-    CocktailComponent
+    CocktailComponent,
+    CocktailFilter
   ],
   imports: [
     BrowserModule,
@@ -22,6 +26,6 @@ import { CocktailComponent } from './cocktail.component';
     HttpModule,
   ],
   providers: [CocktailService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

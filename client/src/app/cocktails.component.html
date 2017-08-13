@@ -1,0 +1,20 @@
+<ul>
+  <li *ngFor="let cocktail of cocktails" class="card">
+    <a [routerLink]=[cocktail.id] class="card-header {{ cocktail.alcohol === false ? 'alcoholfree' : ''}}">
+      {{ cocktail.name }}
+    </a>
+    <div class="card-body">
+      <div class="glass">
+        <img src="/assets/images/glasses/{{ cocktail.glass }}.png" onError="this.src='/assets/images/glasses/default.png'" />
+        <p *ngIf="cocktail.ice">mit Eis</p>
+      </div>
+      <ul class="list-group list-group-flush mb-3">
+        <li *ngFor="let ingredient of cocktail.ingredients"
+            class="list-group-item">
+          {{ ingredient }}
+        </li>
+      </ul>
+      <a [routerLink]=[cocktail.id] class="btn btn-primary d-print-none">View cocktail &raquo;</a>
+    </div>
+  </li>
+</ul>

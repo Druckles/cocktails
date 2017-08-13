@@ -184,4 +184,50 @@
     "Umrühren"
   ],
   "decoration": "Limette"
+}, {
+  "name": "San Fransisco",
+  "ingredients": [
+    "2 cl Zitronensaft",
+    "4 cl Grapefruitsaft",
+    "6 cl Orangensaft",
+    "6 cl Ananassaft",
+    "1 cl Grenadine"
+  ],
+  "glass": "ikea",
+  "ice": true,
+  "method": [
+    "Mit Eis shaken"
+  ],
+  "decoration": "Orange",
+  "alcohol": false
+}, {
+  "name": "Virgin Colada",
+  "ingredients": [
+    "4 cl Kokossirup",
+    "6 cl Sahne",
+    "10 cl Ananassaft"
+  ],
+  "glass": "ikea",
+  "ice": true,
+  "method": [
+    "Mit Eis shaken"
+  ],
+  "decoration": "Ananas",
+  "alcohol": false
+}, {
+  "name": "Virgin Caipirihna",
+  "ingredients": [
+    "4 cl Ginger Ale",
+    "4 1/8s einer Limette",
+    "2 Löffel Rohrzucker"
+  ],
+  "glass": "havana",
+  "ice": true,
+  "method": [
+    "Limetten und Zucker zerdrücken",
+    "Eis und Ginger Ale hinzufügen",
+    "Umrühren"
+  ],
+  "decoration": "Limette",
+  "alcohol": false
 }]

@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import * as cocktails from './src/routes';
 
 const PORT_NUM = 9090;
-const CLIENT_URL = 'http://h2628212.stratoserver.net:9080';
+const CLIENT_URL = 'http://h2628212.stratoserver.net:7080';
 
 const app = express();
 

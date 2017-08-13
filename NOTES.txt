@@ -49,3 +49,6 @@ Some things to do on the server side:
 
 Do 10 Aug 2017 14:43:36 CEST
 Can register other global style sheets in the .angular-cli.json file: https://stackoverflow.com/questions/40273463/angular-2-global-css-file.
+
+Sa 12 Aug 2017 20:13:02 CEST
+Actually found it really easy to install SASS in Angular2. Just need to start using it. Just like that. And called this function, don't know if it's necessary: https://stackoverflow.com/questions/36220256/angular2-angular-cli-sass-options.

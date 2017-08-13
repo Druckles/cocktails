@@ -1,28 +1,39 @@
 <div *ngIf="cocktail">
-  <h2>{{ cocktail.name }}</h2>
+  <h2 class="mb-4">{{ cocktail.name }}
+    <small *ngIf="cocktail.alcohol === false" class="text-muted"><i>
+      Alkoholfrei
+    </i></small>
+  </h2>
 
   <p *ngIf="cocktail.description">{{ cocktail.description }}</p>
 
-  <h3>Glas</h3>
-  <p>{{ cocktail.glass }}</p>
-  <p>{{ cocktail.ice ? 'Mit Eis' : 'Ohne Eis' }}</p>
+  <h5 class="mb-3">Glas</h5>
+  <figure class="figure">
+    <img src="/assets/images/glasses/{{ cocktail.glass }}.png" onError="this.src='/assets/images/glasses/default.png'" class="figure-img" style="width: 5em;"/>
+    <figcaption class="figure-caption text-center"><i>{{ cocktail.ice ? 'Mit Eis' : 'Ohne Eis' }}</i></figcaption>
+  </figure>
 
-  <h3>Zutaten</h3>
+  <div class="row">
+    <div class="col-sm">
+      <h4>Zutaten</h4>
 
-  <ul>
-    <li *ngFor="let ingredient of cocktail.ingredients">
-      {{ ingredient }}
-    </li>
-  </ul>
+      <ul class="list-group">
+        <li *ngFor="let ingredient of cocktail.ingredients" class="list-group-item">
+          {{ ingredient }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-sm">
+      <h4>Methode</h4>
 
-  <h3>Methode</h3>
-
-  <ul>
-    <li *ngFor="let instruction of cocktail.method">
-      {{ instruction }}
-    </li>
-    <li *ngIf="cocktail.decoration">
-      <span class="deco">Deco</span>: {{ cocktail.decoration }}
-    </li>
-  </ul>
+      <ul class="list-group">
+        <li *ngFor="let instruction of cocktail.method" class="list-group-item">
+          {{ instruction }}
+        </li>
+        <li *ngIf="cocktail.decoration" class="list-group-item">
+          <em class="deco text-muted">Deco</em> {{ cocktail.decoration }}
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

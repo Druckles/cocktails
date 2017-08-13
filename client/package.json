@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --host h2628212.stratoserver.net --port 9080",
+    "start": "ng serve --host h2628212.stratoserver.net --port 7080",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

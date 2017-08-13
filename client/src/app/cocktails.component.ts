@@ -1,32 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-import { Cocktail } from './cocktail'
-import { CocktailService } from './cocktail.service';
+import { Cocktail } from './cocktail';
 
 @Component({
   selector: 'cocktails',
-  template: `
-    <ul>
-      <li *ngIf="cocktail.glass==ikea" *ngFor="let cocktail of cocktails">
-        <a [routerLink]=[cocktail.id]>{{ cocktail.name }}</a>
-        <span>{{ cocktail.glass }}</span>
-        <ul>
-          <li *ngFor="let ingredient of cocktail.ingredients">
-            {{ ingredient }}
-          </li>
-        </ul>
-      </li>
-    </ul>
-  `,
+  templateUrl: 'cocktails.component.html',
+  styleUrls: ['cocktails.component.scss']
 })
-export class CocktailsComponent implements OnInit {
-  constructor(private cocktailService: CocktailService) { }
-
-  cocktails: Cocktail[] = [];
-
-  ngOnInit(): void {
-    this.cocktailService.getCocktails().then(cocktails => {
-      this.cocktails = cocktails;
-    });
-  }
+export class CocktailsComponent {
+  @Input() cocktails: Cocktail[];
 }

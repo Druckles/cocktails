@@ -37,5 +37,5 @@ export class Cocktail {
   ingredients: string[];
   method: string[];
   decoration: string;
-  notes: string;
+  notes?: string;
 }

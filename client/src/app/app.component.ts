@@ -4,15 +4,15 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   template: `
-    <header>
+    <header class="d-print-none">
       <h1>Cocktails - Das Lamm</h1>
     </header>
 
-    <body>
+    <body class="container">
       <router-outlet></router-outlet>
     </body>
   `,
-  styleUrls: ['app.component.css']
+  styleUrls: ['app.component.scss']
 })
 export class AppComponent {
 }
