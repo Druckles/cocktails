@@ -4,7 +4,7 @@ import bodyParser from 'body-parser';
 import * as cocktails from './src/routes';
 
 const PORT_NUM = 9090;
-const CLIENT_URL = 'http://h2628212.stratoserver.net:7080';
+const CLIENT_URL = 'http://h2628212.stratoserver.net';
 
 const app = express();
 
@@ -17,7 +17,8 @@ app.all('*', function(req, res, next) {
 
   //! TODO These should be limited to get methods.
   res.set('Access-Control-Allow-Origin', CLIENT_URL);
-  res.set('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+  //res.set('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE');
+  res.set('Access-Control-Allow-Methods', 'GET');
   res.set('Access-Control-Allow-Headers', 'Content-Type');
 
   //! TODO Not sure what this does.

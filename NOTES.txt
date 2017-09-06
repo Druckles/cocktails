@@ -52,3 +52,9 @@ Can register other global style sheets in the .angular-cli.json file: https://st
 
 Sa 12 Aug 2017 20:13:02 CEST
 Actually found it really easy to install SASS in Angular2. Just need to start using it. Just like that. And called this function, don't know if it's necessary: https://stackoverflow.com/questions/36220256/angular2-angular-cli-sass-options.
+
+Mi 30 Aug 2017 15:15:15 CEST
+Production Angular: https://stackoverflow.com/questions/37631098/how-to-bundle-an-angular-app-for-production
+
+Mi 06 Sep 2017 17:47:57 CEST
+Tried running the tests on the server. I missed out the babel presets in the package.json.
