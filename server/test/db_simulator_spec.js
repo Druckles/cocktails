@@ -96,6 +96,34 @@ describe('DatabaseSimulator', () => {
       }).then(done, done);
     });
 
+    it('allows a search by regex', done => {
+      const db = new DatabaseSimulator();
+      db.initializeCollection('persons', [{
+        name: 'alice spencer',
+      }, {
+        name: 'alice cooper',
+      }, {
+        name: 'bob spencer',
+      }]).then(collection => {
+        const search1 = collection().find({name: {
+          $regex: new RegExp('alice'),
+        }}).toArray().then(result => {
+          expect(result.map(x => x.name)).to.have.members([
+            'alice spencer', 'alice cooper'
+          ]);
+        });
+        const search2 = collection().find({name: {
+          $regex: new RegExp('Spencer$'),
+          $options: 'i'
+        }}).toArray().then(result => {
+          expect(result.map(x => x.name)).to.have.members([
+            'alice spencer', 'bob spencer'
+          ]);
+        });
+        Promise.all([search1, search2]).then(() => {}).then(done, done);
+      }).catch(done);
+    });
+
   });
 
   describe('findOne', () => {

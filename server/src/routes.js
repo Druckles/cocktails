@@ -21,23 +21,35 @@ export class Router {
   }
 
   getCollection(req, res) {
-    let collectionPromise;
+    let waitForCollection;
     if (req.query.name) {
-      console.log('Filtering cocktails by ', req.query.name);
-      collectionPromise = this.manager.filterByName(req.query.name);
+      console.log('Filtering cocktails by', req.query.name);
+      waitForCollection = this.manager.filterByName(req.query.name);
     } else {
       console.log('Retrieving all cocktails...');
-      collectionPromise = this.manager.findAll(req.query.name)
+      waitForCollection = this.manager.findAll(req.query.name)
     }
     // Return the result.
-    collectionPromise.then(cocktails => {
+    waitForCollection.then(cocktails => {
       res.send(cocktails);
+    }).catch(error => {
+      console.log(error);
     });
   }
 
   findById(req, res) {
     console.log('Retrieving cocktail:', req.params.id);
     this.manager.findById(req.params.id).then(cocktail => {
+      if (!cocktail) {
+        return res.sendStatus(404);
+      }
+      res.send(cocktail);
+    }).catch(handleError(res));
+  }
+
+  findBySlug(req, res) {
+    console.log('Retrieving cocktail:', req.params.slug);
+    this.manager.findBySlug(req.params.slug).then(cocktail => {
       if (!cocktail) {
         return res.sendStatus(404);
       }

@@ -7,7 +7,23 @@ function checkItem(item, searchObj) {
   // Positive search. Only doesn't match if it fails one of the criteria.
   let found = true;
   for (const key of Object.keys(searchObj)) {
-    if (!(key in item) || item[key] !== searchObj[key]) {
+    // Fail if it doesn't have the key.
+    if (!(key in item)) {
+      found = false;
+      break;
+    }
+    const term = searchObj[key];
+    // Either it's a regex...
+    if (typeof term === 'object' && '$regex' in term) {
+      const regex = term.$options === undefined ? term.$regex
+        : new RegExp(term.$regex.source, term.$options);
+      if (!regex.test(item[key])) {
+        found = false;
+        break;
+      }
+    }
+    // Or do a normal check.
+    else if (item[key] !== term) {
       found = false;
       break;
     }
@@ -93,6 +109,7 @@ class DatabaseCollectionSimulator {
   }
 
   async insertOne(something) {
+    //! TODO Need to make sure the ID is unique! Even the this._id value.
     // Whether to use the ID from the object.
     const fakeId = ('_id' in something && !(something._id in this._database));
     const id = fakeId ? something._id : this._id++;

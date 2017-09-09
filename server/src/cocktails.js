@@ -10,6 +10,10 @@ function assertIsId(id) {
   }
 }
 
+RegExp.escape= function(s) {
+  return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+};
+
 export class CocktailManager {
 
   constructor(db, options) {
@@ -34,6 +38,13 @@ export class CocktailManager {
       .replace(/\s+/g, '_')
       // Remove duplicate spaces.
       .replace(/_+/g, '_');
+  }
+
+  // Add the needed fields to the cocktail.
+  _preformatCocktail(cocktail) {
+    return Object.assign({}, cocktail, {
+      slug: this.getSlugName(cocktail)
+    });
   }
 
   // Return all cocktails that start with the given name.
@@ -61,11 +72,26 @@ export class CocktailManager {
     return this.db.collection('drinks').findOne({slug});
   }
 
+  insertMany(cocktails) {
+    // Preformat the drink as we need.
+    const cocktailsToInsert = [];
+    for (const cocktail of cocktails) {
+      cocktailsToInsert.push(this._preformatCocktail(cocktail));
+    }
+    return new Promise((resolve, reject) => {
+      this.db.collection('drinks').insertMany(cocktailsToInsert,
+          (error, doc) => {
+        if (error) {
+          return reject(error);
+        }
+        resolve(doc.ops[0]);
+      });
+    });
+  }
+
   // Insert a cocktail using an object.
   async insertOne(cocktail) {
-    const cocktailToInsert = Object.assign({}, cocktail, {
-      slug: this.getSlugName(cocktail)
-    });
+    const cocktailToInsert = this._preformatCocktail(cocktail);
     return new Promise((resolve, reject) => {
       this.db.collection('drinks').insertOne(cocktailToInsert,
           (error, doc) => {
