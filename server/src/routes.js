@@ -21,6 +21,15 @@ export class Router {
   }
 
   getCollection(req, res) {
+    // Also allow access through parameters: id and ids.
+    if (req.query.id) {
+      req.params.id = req.query.id;
+      return this.findById(req, res);
+    }
+    if (req.query.slug) {
+      req.params.slug = req.query.slug;
+      return this.findBySlug(req, res);
+    }
     let waitForCollection;
     if (req.query.name) {
       console.log('Filtering cocktails by', req.query.name);

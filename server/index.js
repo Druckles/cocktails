@@ -35,7 +35,7 @@ Data.connect(Data.Mode.PRODUCTION).then(db => {
   const router = new Router(cocktailManager);
 
   app.get('/', router.getCollection.bind(router));
-  app.get('/:id', router.findById.bind(router));
+  app.get('/:slug', router.findBySlug.bind(router));
   app.post('/', router.addOne.bind(router));
   app.put('/:id', router.updateOne.bind(router));
   app.delete('/:id', router.deleteOne.bind(router));
