@@ -20,7 +20,7 @@ export class CocktailComponent {
 
   ngOnInit(): void {
     this.route.paramMap.switchMap(params => {
-      return this.cocktailService.getCocktailById(params.get('id'));
+      return this.cocktailService.getCocktailBySlug(params.get('slug'));
     }).subscribe(cocktail => this.cocktail = cocktail);
   }
 }

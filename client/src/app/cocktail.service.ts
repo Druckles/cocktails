@@ -35,9 +35,15 @@ export class CocktailService {
       .catch(this.handleError);
   }
 
-  //! TODO Allow my to do this with slugs.
+  getCocktailBySlug(slug: string): Promise<Cocktail> {
+    const url = `${SERVER_URL}/${slug}`;
+    return this.http.get(url).toPromise()
+      .then(response => this.toCocktail(response.json()))
+      .catch(this.handleError);
+  }
+
   getCocktailById(id: string): Promise<Cocktail> {
-    const url = `${SERVER_URL}/${id}`;
+    const url = `${SERVER_URL}/?id=${id}`;
     return this.http.get(url).toPromise()
       .then(response => this.toCocktail(response.json()))
       .catch(this.handleError);

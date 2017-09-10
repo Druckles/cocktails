@@ -1,6 +1,6 @@
 <ul>
   <li *ngFor="let cocktail of cocktails | SortPipe:sortFunction" class="card">
-    <a [routerLink]=[cocktail.id] class="card-header {{ cocktail.alcohol === false ? 'alcoholfree' : ''}}">
+    <a [routerLink]=[cocktail.slug] class="card-header {{ cocktail.alcohol === false ? 'alcoholfree' : ''}}">
       {{ cocktail.name }}
     </a>
     <div class="card-body">
@@ -14,7 +14,7 @@
           {{ ingredient }}
         </li>
       </ul>
-      <a [routerLink]=[cocktail.id] class="btn btn-primary d-print-none">View cocktail &raquo;</a>
+      <a [routerLink]=[cocktail.slug] class="btn btn-primary d-print-none">View cocktail &raquo;</a>
     </div>
   </li>
 </ul>

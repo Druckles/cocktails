@@ -8,6 +8,9 @@ const routes: Routes = [{
   path: '',
   component: DashboardComponent
 }, {
+  path: ':slug',
+  component: CocktailComponent
+}, {
   path: ':id',
   component: CocktailComponent
 }];
