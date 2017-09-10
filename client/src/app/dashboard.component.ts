@@ -28,15 +28,15 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  private aToZ(a: Cocktail, b: Cocktail): number {
+  aToZ(a: Cocktail, b: Cocktail): number {
     return this.strcmp(a.name, b.name);
   }
 
-  private zToA(a: Cocktail, b: Cocktail): number {
+  zToA(a: Cocktail, b: Cocktail): number {
     return this.aToZ(a, b) * -1;
   }
 
-  private glassSort(a: Cocktail, b: Cocktail): number {
+  glassSort(a: Cocktail, b: Cocktail): number {
     return this.strcmp(a.glass, b.glass) * -1;
   }
 
@@ -46,15 +46,15 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  private isSearchByName(): boolean {
+  isSearchByName(): boolean {
     return this.searchType === 'name';
   }
 
-  private search(term: string): void {
+  search(term: string): void {
     this.searchTerm = term;
   }
 
-  private changeSortingMethod(sorting: SortFunction): void {
+  changeSortingMethod(sorting: SortFunction): void {
     this.sortFunction = sorting;
   }
 

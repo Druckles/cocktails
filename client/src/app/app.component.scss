@@ -1,9 +1,27 @@
-$colorDark: #294;
+@import '../assets/css/_colors';
+
+@font-face {
+  font-family: 'Lucida Handwriting';
+  src: url('fonts/LHANDW.ttf');
+}
 
 header {
-  padding: 1rem;
+  padding: 1.8rem;
+  margin-bottom: 1rem;
   color: white;
-  background-color: $colorDark;
+  border-bottom: 0.6rem solid $colorDark;
+  background-color: $colorMedium;
+  h1 {
+    font-family: 'Lucida Handwriting';
+  }
+  h3 {
+    color: $colorDark;
+  }
+  img {
+    float: right;
+    width: 20rem;
+    border: 0.3rem solid $colorDark;
+  }
 }
 
 .container {

@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'assets/css/_colors';
+
+.btn-primary, .btn-outline-primary {
+  &:active, &:focus {
+    box-shadow: 0 0 0rem 0.25rem $color2Light;
+  }
+}
+
+.btn-primary {
+  background-color: $color2Medium;
+  border-color: $color2Dark;
+  &:hover, &:active {
+    border-color: $color2Dark;
+    background-color: $color2Dark;
+  }
+}
+
+.btn-outline-primary {
+  border-color: $color2Medium;
+  color: $color2Medium;
+  &:hover, &:active {
+    border-color: $color2Medium;
+    background-color: $color2Medium;
+    color: white;
+  }
+}
+
+.card-header {
+  color: $colorMedium;
+  &:hover {
+    color: $colorDark;
+  }
+}

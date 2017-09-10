@@ -5,7 +5,9 @@ import { Router } from '@angular/router';
   selector: 'app-root',
   template: `
     <header class="d-print-none">
-      <h1>Cocktails - Das Lamm</h1>
+      <img src="/assets/images/hotel.jpg" />
+      <h1>Das Lamm</h1>
+      <h3>Cocktails Liste</h3>
     </header>
 
     <div class="container">
