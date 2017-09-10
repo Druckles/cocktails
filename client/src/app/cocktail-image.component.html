@@ -1,1 +1,3 @@
-<img src="/assets/images/glasses/{{ cocktail.glass }}.png" onError="this.src='/assets/images/glasses/default.png'" />
+<img #cocktailGlass (load)="drawCocktail()" src="/assets/images/glasses/{{ cocktail.glass }}.png" onError="this.src='/assets/images/glasses/default.png'" />
+
+<canvas #cocktailCanvas></canvas>

@@ -1,7 +1,12 @@
 :host {
   display: block;
+  position: relative;
 }
 
 img {
   width: 100%;
+  position: absolute;
+}
+
+canvas {
 }
