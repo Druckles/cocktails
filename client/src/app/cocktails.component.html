@@ -5,7 +5,7 @@
     </a>
     <div class="card-body">
       <div class="glass">
-        <img src="/assets/images/glasses/{{ cocktail.glass }}.png" onError="this.src='/assets/images/glasses/default.png'" />
+        <cocktail-image [cocktail]="cocktail"></cocktail-image>
         <p *ngIf="cocktail.ice">mit Eis</p>
       </div>
       <ul class="list-group list-group-flush mb-3">

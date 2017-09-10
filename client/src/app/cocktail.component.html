@@ -9,7 +9,7 @@
 
   <h5 class="mb-3">Glas</h5>
   <figure class="figure">
-    <img src="/assets/images/glasses/{{ cocktail.glass }}.png" onError="this.src='/assets/images/glasses/default.png'" class="figure-img" style="width: 5em;"/>
+    <cocktail-image [cocktail]="cocktail"></cocktail-image>
     <figcaption class="figure-caption text-center"><i>{{ cocktail.ice ? 'Mit Eis' : 'Ohne Eis' }}</i></figcaption>
   </figure>
 

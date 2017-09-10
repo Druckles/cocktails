@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard.component';
 import { CocktailsComponent } from './cocktails.component';
 import { CocktailComponent } from './cocktail.component';
+import { CocktailImageComponent } from './cocktail-image.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { CocktailComponent } from './cocktail.component';
     DashboardComponent,
     CocktailsComponent,
     CocktailComponent,
+    CocktailImageComponent,
     CocktailFilter,
     IngredientFilter,
     SortPipe

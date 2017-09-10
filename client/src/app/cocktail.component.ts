@@ -9,6 +9,11 @@ import { CocktailService } from './cocktail.service';
 @Component({
   selector: 'cocktail',
   templateUrl: 'cocktail.component.html',
+  styles: [`
+    cocktail-image {
+      width: 5.0rem;
+    }
+  `]
 })
 export class CocktailComponent {
   constructor(
